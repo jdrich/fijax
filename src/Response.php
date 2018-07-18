@@ -21,10 +21,10 @@ class Response {
   }
 
   public function write(\Psr\Http\Message\ResponseInterface $response) {
-    $response->withStatus($this->getCode());
-    $response->withHeader('Content-Type', 'application/json');
+    $response = $response->withStatus($this->getCode());
+    $response = $response->withHeader('Content-Type', 'application/json');
 
-    $response->getBody()->write($this->getJson());
+    $response = $response->getBody()->write($this->getJson());
 
     return $response;
   }

@@ -30,7 +30,7 @@ class Response {
   }
 
   public function getCode() {
-    return $this->valid ? '200' : '400';
+    return $this->valid ? 200 : 400;
   }
 
   public function getJson() {

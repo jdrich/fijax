@@ -8,8 +8,8 @@ class Response {
   protected $errors;
 
   public function __construct() {
-    $valid = true;
-    $errors = [];
+    $this->valid = true;
+    $this->errors = [];
   }
 
   public function __toString() {

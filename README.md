@@ -1,2 +1,2 @@
 # fijax
-Ajax form submissiono
+Ajax form submission pattern.

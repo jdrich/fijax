@@ -22,19 +22,22 @@ class Response {
 
   public function write(\Psr\Http\Message\ResponseInterface $response) {
     $response = $response->withStatus($this->getCode());
-    $response = $response->withHeader('Content-Type', 'application/json');
+    $response = $response->withHeader('Content-type', 'application/json');
 
-    $response = $response->getBody()->write($this->getJson());
+    $response->getBody()->write($this->getJson());
 
     return $response;
   }
 
   public function getCode() {
-    return $this->valid ? 200 : 400;
+    return $this->isValid() ? 200 : 400;
   }
 
   public function getJson() {
-    return json_encode($this->errors);
+    return json_encode([
+      'success' => $this->isValid(),
+      'errors' => $this->errors
+    ]);
   }
 
   public function addError($name, $message) {
